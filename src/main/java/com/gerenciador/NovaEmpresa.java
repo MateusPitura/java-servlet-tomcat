@@ -18,7 +18,6 @@ public class NovaEmpresa extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
         Banco banco = new Banco(); //instancia um objeto da classe Banco
-        PrintWriter out = resp.getWriter(); //retorna um objeto que permite escrita
         String nomeEmpresa = req.getParameter("nome"); //retorna uma string com o valor do parâmetro informado na url
         String dataEmpresa = req.getParameter("data");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
