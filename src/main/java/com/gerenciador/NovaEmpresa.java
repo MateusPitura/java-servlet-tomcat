@@ -30,8 +30,9 @@ public class NovaEmpresa extends HttpServlet{
         }
         Empresa empresa = new Empresa(nomeEmpresa, dataAbertura); //instancia uma nova empresa com a string informada no parâmetro
         banco.adiciona(empresa); //adiciona uma nova empresa no banco
-        RequestDispatcher rd = req.getRequestDispatcher("/novaEmpresaCriada.jsp");
-        req.setAttribute("empresa", empresa.getNome());
-        rd.forward(req, resp);
+        resp.sendRedirect("listaEmpresas");
+        // RequestDispatcher rd = req.getRequestDispatcher("/listaEmpresas");
+        // req.setAttribute("empresa", empresa.getNome());
+        // rd.forward(req, resp);
     }
 }

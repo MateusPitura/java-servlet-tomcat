@@ -5,6 +5,9 @@
 
 <html>
     <body>
+        <c:if test="${not empty empresa}">
+            Empresa ${ empresa } cadastrada
+        </c:if>
         Lista de empresas: <br />
         <ul>
             <c:forEach items="${lista}" var="empresa">
