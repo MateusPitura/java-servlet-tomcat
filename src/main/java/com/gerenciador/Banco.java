@@ -28,6 +28,17 @@ public class Banco {
         return lista;
     }
 
+    public Empresa getEmpresa(Integer id){
+        Iterator<Empresa> it = lista.iterator();
+        while(it.hasNext()){
+            Empresa emp = it.next();
+            if(emp.getId()==id){
+                return emp;
+            }
+        }
+        return null;
+    }
+
     public void remove(Integer id){
         Iterator<Empresa> it = lista.iterator();
         while(it.hasNext()){
@@ -35,6 +46,17 @@ public class Banco {
             if(emp.getId()==id){
                 it.remove();
             }
+        }
     }
+
+    public void update(Integer id, String nome, Date data){
+        Iterator<Empresa> it = lista.iterator();
+        while(it.hasNext()){
+            Empresa emp = it.next();
+            if(emp.getId()==id){
+                emp.setNome(nome);
+                emp.setDataAbertura(data);
+            }
+        }
     }
 }

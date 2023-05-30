@@ -30,8 +30,16 @@ public class Empresa {
         return this.nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Date getDataAbertura() {
         return dataAbertura;
+    }
+
+    public void setDataAbertura(Date dataAbertura) {
+        this.dataAbertura = dataAbertura;
     }
 
     @Override
