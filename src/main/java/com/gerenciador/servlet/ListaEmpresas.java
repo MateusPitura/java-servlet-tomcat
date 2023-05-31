@@ -1,4 +1,4 @@
-package com.gerenciador;
+package com.gerenciador.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gerenciador.modelo.Banco;
+import com.gerenciador.modelo.Empresa;
 
 @WebServlet(urlPatterns="/listaEmpresas")
 public class ListaEmpresas extends HttpServlet{

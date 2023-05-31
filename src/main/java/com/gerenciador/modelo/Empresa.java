@@ -1,4 +1,4 @@
-package com.gerenciador;
+package com.gerenciador.modelo;
 
 import java.util.Date;
 

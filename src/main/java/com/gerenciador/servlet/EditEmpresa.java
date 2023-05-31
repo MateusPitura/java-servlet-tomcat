@@ -1,4 +1,4 @@
-package com.gerenciador;
+package com.gerenciador.servlet;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gerenciador.modelo.Banco;
 
 @WebServlet(urlPatterns="/editEmpresa")
 public class EditEmpresa extends HttpServlet{
