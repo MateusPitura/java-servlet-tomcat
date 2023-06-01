@@ -9,15 +9,14 @@ import com.gerenciador.modelo.Banco;
 import com.gerenciador.modelo.Empresa;
 
 public class Alteracao {
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Banco banco = new Banco();
         String id = req.getParameter("id");
         Integer idEmpresa = Integer.valueOf(id);
         Empresa empresa = banco.getEmpresa(idEmpresa);
-        RequestDispatcher rd = req.getRequestDispatcher("/alteracao.jsp");
         req.setAttribute("id", idEmpresa);
         req.setAttribute("nome", empresa.getNome());
         req.setAttribute("data", empresa.getDataAbertura());
-        rd.forward(req, resp);
+        return "forward:alteracao.jsp";
     }
 }

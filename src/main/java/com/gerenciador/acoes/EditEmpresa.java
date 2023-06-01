@@ -12,7 +12,7 @@ import com.gerenciador.modelo.Banco;
 
 public class EditEmpresa {
 
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Banco banco = new Banco();
         String id = req.getParameter("id");
         Integer idEmpresa = Integer.valueOf(id);
@@ -26,6 +26,6 @@ public class EditEmpresa {
             throw new ServletException(e);
         }
         banco.update(idEmpresa, nome, dataAbertura);
-        resp.sendRedirect("entrada?acao=ListaEmpresas");
+        return "redirect:entrada?acao=ListaEmpresas";
     }
 }

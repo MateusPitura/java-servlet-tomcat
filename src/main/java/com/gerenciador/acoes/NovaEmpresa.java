@@ -11,7 +11,7 @@ import com.gerenciador.modelo.Banco;
 import com.gerenciador.modelo.Empresa;
 
 public class NovaEmpresa {
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Banco banco = new Banco(); //instancia um objeto da classe Banco
         String nomeEmpresa = req.getParameter("nome"); //retorna uma string com o valor do parâmetro informado na url
         String dataEmpresa = req.getParameter("data");
@@ -24,6 +24,6 @@ public class NovaEmpresa {
         }
         Empresa empresa = new Empresa(nomeEmpresa, dataAbertura); //instancia uma nova empresa com a string informada no parâmetro
         banco.adiciona(empresa); //adiciona uma nova empresa no banco
-        resp.sendRedirect("entrada?acao=ListaEmpresas");
+        return "redirect:entrada?acao=ListaEmpresas";
     }
 }
