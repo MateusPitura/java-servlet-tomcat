@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List, com.gerenciador.Empresa"%> 
+<%@ page import="java.util.List, com.gerenciador.modelo.Empresa"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/deleteEmpresa" var="deleteServlet"/>
-<c:url value="/alteracao" var="alteracaoServlet"/>
+<c:url value="/entrada?acao=RemoveEmpresas" var="deleteServlet"/>
+<c:url value="/entrada?acao=MostraEmpresas" var="alteracaoServlet"/>
 
 <html>
     <body>
@@ -15,8 +15,8 @@
             <c:forEach items="${lista}" var="empresa">
                 <li>
                     ${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
-                    <a href="${deleteServlet}?id=${empresa.id}">delete</a>
-                    <a href="${alteracaoServlet}?id=${empresa.id}">edit</a>   
+                    <a href="${deleteServlet}&id=${empresa.id}">delete</a>
+                    <a href="${alteracaoServlet}&id=${empresa.id}">edit</a>   
                 </li>
             </c:forEach>
         </ul>
