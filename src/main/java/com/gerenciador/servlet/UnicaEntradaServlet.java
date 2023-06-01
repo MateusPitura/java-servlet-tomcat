@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gerenciador.acoes.Alteracao;
 import com.gerenciador.acoes.DeleteEmpresas;
 import com.gerenciador.acoes.EditEmpresa;
+import com.gerenciador.acoes.Formulario;
 import com.gerenciador.acoes.ListaEmpresas;
 import com.gerenciador.acoes.NovaEmpresa;
 
@@ -21,7 +22,6 @@ public class UnicaEntradaServlet extends HttpServlet{
 
         String nome = null;
 
-        System.out.println(paramAcao);
         if(paramAcao.equals("ListaEmpresas")){
             ListaEmpresas le = new ListaEmpresas();
             nome = le.executa(req, resp);
@@ -30,19 +30,22 @@ public class UnicaEntradaServlet extends HttpServlet{
             nome = de.executa(req, resp);
         } else if(paramAcao.equals("MostraEmpresas")){
             Alteracao a = new Alteracao();
-            a.executa(req, resp);
+            nome = a.executa(req, resp);
         } else if(paramAcao.equals("EditaEmpresas")){
             EditEmpresa ee = new EditEmpresa();
-            ee.executa(req, resp);
+            nome = ee.executa(req, resp);
         } else if(paramAcao.equals("NovaEmpresa")){
             NovaEmpresa ne = new NovaEmpresa();
-            ne.executa(req, resp);
+            nome = ne.executa(req, resp);
+        } else if(paramAcao.equals("Formulario")){
+            Formulario f = new Formulario();
+            nome = f.executa(req, resp);
         }
 
         String[] tipoEndereco = nome.split(":");
         
         if(tipoEndereco[0].equals("forward")){
-            RequestDispatcher rd = req.getRequestDispatcher(tipoEndereco[1]);
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/" + tipoEndereco[1]);
             rd.forward(req, resp);
         } else if(tipoEndereco[0].equals("redirect")){
             resp.sendRedirect(tipoEndereco[1]);
