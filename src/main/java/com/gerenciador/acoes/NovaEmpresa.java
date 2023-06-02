@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gerenciador.modelo.Banco;
 import com.gerenciador.modelo.Empresa;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao {
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Banco banco = new Banco(); //instancia um objeto da classe Banco
         String nomeEmpresa = req.getParameter("nome"); //retorna uma string com o valor do parâmetro informado na url

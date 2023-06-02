@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gerenciador.acoes.Acao;
 import com.gerenciador.acoes.Alteracao;
 import com.gerenciador.acoes.DeleteEmpresas;
 import com.gerenciador.acoes.EditEmpresa;
@@ -19,28 +21,18 @@ public class UnicaEntradaServlet extends HttpServlet{
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
         String paramAcao = req.getParameter("acao");
+        String nomeDaClasse = "com.gerenciador.acoes." + paramAcao;
 
-        String nome = null;
-
-        if(paramAcao.equals("ListaEmpresas")){
-            ListaEmpresas le = new ListaEmpresas();
-            nome = le.executa(req, resp);
-        } else if(paramAcao.equals("RemoveEmpresas")){
-            DeleteEmpresas de = new DeleteEmpresas();
-            nome = de.executa(req, resp);
-        } else if(paramAcao.equals("MostraEmpresas")){
-            Alteracao a = new Alteracao();
-            nome = a.executa(req, resp);
-        } else if(paramAcao.equals("EditaEmpresas")){
-            EditEmpresa ee = new EditEmpresa();
-            nome = ee.executa(req, resp);
-        } else if(paramAcao.equals("NovaEmpresa")){
-            NovaEmpresa ne = new NovaEmpresa();
-            nome = ne.executa(req, resp);
-        } else if(paramAcao.equals("Formulario")){
-            Formulario f = new Formulario();
-            nome = f.executa(req, resp);
-        }
+        Class classe;
+        Object obj;
+        try {
+            classe = Class.forName(nomeDaClasse);
+            obj = classe.newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            throw new ServletException(e);
+        };
+        Acao acao = (Acao)obj;
+        String nome = acao.executa(req, resp);
 
         String[] tipoEndereco = nome.split(":");
         

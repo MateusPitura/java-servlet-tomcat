@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gerenciador.modelo.Banco;
 
 
-public class EditEmpresa {
+public class EditEmpresa implements Acao{
 
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Banco banco = new Banco();

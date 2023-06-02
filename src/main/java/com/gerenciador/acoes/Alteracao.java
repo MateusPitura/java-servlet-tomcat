@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.gerenciador.modelo.Banco;
 import com.gerenciador.modelo.Empresa;
 
-public class Alteracao {
+public class Alteracao implements Acao{
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Banco banco = new Banco();
         String id = req.getParameter("id");
