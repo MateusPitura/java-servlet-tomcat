@@ -7,14 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.gerenciador.acoes.Acao;
-import com.gerenciador.acoes.Alteracao;
-import com.gerenciador.acoes.DeleteEmpresas;
-import com.gerenciador.acoes.EditEmpresa;
-import com.gerenciador.acoes.Formulario;
-import com.gerenciador.acoes.ListaEmpresas;
-import com.gerenciador.acoes.NovaEmpresa;
 
 @WebServlet(urlPatterns="/entrada")
 public class UnicaEntradaServlet extends HttpServlet{
@@ -23,10 +16,9 @@ public class UnicaEntradaServlet extends HttpServlet{
         String paramAcao = req.getParameter("acao");
         String nomeDaClasse = "com.gerenciador.acoes." + paramAcao;
 
-        Class classe;
         Object obj;
         try {
-            classe = Class.forName(nomeDaClasse);
+            Class classe = Class.forName(nomeDaClasse);
             obj = classe.newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             throw new ServletException(e);
