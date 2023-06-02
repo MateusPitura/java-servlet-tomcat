@@ -3,10 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:url value="/entrada?acao=RemoveEmpresas" var="deleteServlet"/>
-<c:url value="/entrada?acao=MostraEmpresas" var="alteracaoServlet"/>
+<c:url value="/entrada?acao=Alteracao" var="alteracaoServlet"/>
 
 <html>
     <body>
+        Usuario logado: ${usuarioLogado.login}
+        <br>
+        <br>
         <c:if test="${not empty empresa}">
             Empresa ${ empresa } cadastrada
         </c:if>
