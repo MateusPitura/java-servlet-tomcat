@@ -2,13 +2,14 @@
 <%@ page import="java.util.List, com.gerenciador.modelo.Empresa"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/entrada?acao=RemoveEmpresas" var="deleteServlet"/>
+<c:url value="/entrada?acao=DeleteEmpresas" var="deleteServlet"/>
 <c:url value="/entrada?acao=Alteracao" var="alteracaoServlet"/>
+<c:url value="/entrada?acao=Logout" var="logOutServlet"/>
 
 <html>
     <body>
+        <c:import url="logout-parcial.jsp"/>
         Usuario logado: ${usuarioLogado.login}
-        <br>
         <br>
         <c:if test="${not empty empresa}">
             Empresa ${ empresa } cadastrada

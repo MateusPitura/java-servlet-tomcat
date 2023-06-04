@@ -3,6 +3,7 @@
 <c:url value="/entrada?acao=NovaEmpresa" var="linkServlet"/>
 
 <html>
+    <c:import url="logout-parcial.jsp"/>
     <head>
         <title>Formulario</title>
     </head>
